@@ -3,12 +3,24 @@
       <h3>Burgers to Eat</h3>
     <form action="/{{this.id}}?_method=DELETE" method="POST">
       {{#each burgers}}
-        
-          <p>{{this.id}}. {{this.burger_name}}  <button type="submit" class="btn btn-warning btn-xs" id="devour">Devour</button></p>        
-        
+        {{#unless devoured}}
+          <p>{{this.id}}. {{this.name}}  <button type="submit" class="btn btn-warning btn-xs" data-id="devour">Devour</button></p>        
+        {{/unless}}
       {{/each}}
     </form>
   </div>
+
+<div class="col-xs-2 col-sm-3 col-md-4 uneaten">
+      <h3>Devoured Burgers</h3>
+    <div>
+      {{#each burgers}}
+        {{#if devoured}}
+          <p>{{this.id}}. {{this.name}}</p>        
+        {{/if}}
+      {{/each}}
+    </div>
+  </div>
+
   <div class="col-xs-8 col-sm-6 col-md-4" id="sign">
   		<img src="assets/hamburger.png">
   		<h1>Eat-Da-Burger!</h1></div>
